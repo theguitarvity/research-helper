@@ -2,7 +2,7 @@
   "version": 1,
   "context": "context/fundactional.md,context/globalization.md",
   "workflow": "trunk",
-  "status": "FEATURES_IDENTIFIED",
+  "status": "COMPLETED",
   "constitution": {
     "status": "VALIDATED",
     "version": "1.0.0",
@@ -58,13 +58,13 @@
       "spec_directory": "specs/002-vs002-research-task-state",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "RUNNING",
-        "clarify": "PENDING",
-        "plan": "PENDING",
-        "tasks": "PENDING",
-        "analyze": "PENDING",
-        "implement": "PENDING",
-        "validate": "PENDING"
+        "specify": "PASSED",
+        "clarify": "PASSED",
+        "plan": "PASSED",
+        "tasks": "PASSED",
+        "analyze": "PASSED",
+        "implement": "PASSED",
+        "validate": "PASSED"
       }
     },
     {
@@ -88,13 +88,13 @@
       "spec_directory": "specs/003-vs003-scientific-search",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "RUNNING",
-        "clarify": "PENDING",
-        "plan": "PENDING",
-        "tasks": "PENDING",
-        "analyze": "PENDING",
-        "implement": "PENDING",
-        "validate": "PENDING"
+        "specify": "PASSED",
+        "clarify": "PASSED",
+        "plan": "PASSED",
+        "tasks": "PASSED",
+        "analyze": "PASSED",
+        "implement": "PASSED",
+        "validate": "PASSED"
       }
     },
     {
@@ -118,13 +118,13 @@
       "spec_directory": "specs/004-vs004-paper-import",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "RUNNING",
-        "clarify": "PENDING",
-        "plan": "PENDING",
-        "tasks": "PENDING",
-        "analyze": "PENDING",
-        "implement": "PENDING",
-        "validate": "PENDING"
+        "specify": "PASSED",
+        "clarify": "PASSED",
+        "plan": "PASSED",
+        "tasks": "PASSED",
+        "analyze": "PASSED",
+        "implement": "PASSED",
+        "validate": "PASSED"
       }
     },
     {
@@ -148,13 +148,13 @@
       "spec_directory": "specs/005-vs005-reference-extraction",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "RUNNING",
-        "clarify": "PENDING",
-        "plan": "PENDING",
-        "tasks": "PENDING",
-        "analyze": "PENDING",
-        "implement": "PENDING",
-        "validate": "PENDING"
+        "specify": "PASSED",
+        "clarify": "PASSED",
+        "plan": "PASSED",
+        "tasks": "PASSED",
+        "analyze": "PASSED",
+        "implement": "PASSED",
+        "validate": "PASSED"
       }
     },
     {
@@ -179,13 +179,13 @@
       "spec_directory": "specs/006-vs006-reference-resolution",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "RUNNING",
-        "clarify": "PENDING",
-        "plan": "PENDING",
-        "tasks": "PENDING",
-        "analyze": "PENDING",
-        "implement": "PENDING",
-        "validate": "PENDING"
+        "specify": "PASSED",
+        "clarify": "PASSED",
+        "plan": "PASSED",
+        "tasks": "PASSED",
+        "analyze": "PASSED",
+        "implement": "PASSED",
+        "validate": "PASSED"
       }
     },
     {
@@ -208,13 +208,13 @@
       "spec_directory": "specs/007-vs007-open-access-acquisition",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "RUNNING",
-        "clarify": "PENDING",
-        "plan": "PENDING",
-        "tasks": "PENDING",
-        "analyze": "PENDING",
-        "implement": "PENDING",
-        "validate": "PENDING"
+        "specify": "PASSED",
+        "clarify": "PASSED",
+        "plan": "PASSED",
+        "tasks": "PASSED",
+        "analyze": "PASSED",
+        "implement": "PASSED",
+        "validate": "PASSED"
       }
     },
     {
@@ -237,13 +237,13 @@
       "spec_directory": "specs/008-vs008-structured-paper-synthesis",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "RUNNING",
-        "clarify": "PENDING",
-        "plan": "PENDING",
-        "tasks": "PENDING",
-        "analyze": "PENDING",
-        "implement": "PENDING",
-        "validate": "PENDING"
+        "specify": "PASSED",
+        "clarify": "PASSED",
+        "plan": "PASSED",
+        "tasks": "PASSED",
+        "analyze": "PASSED",
+        "implement": "PASSED",
+        "validate": "PASSED"
       }
     },
     {
@@ -266,13 +266,13 @@
       "spec_directory": "specs/009-vs009-citation-validation",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "RUNNING",
-        "clarify": "PENDING",
-        "plan": "PENDING",
-        "tasks": "PENDING",
-        "analyze": "PENDING",
-        "implement": "PENDING",
-        "validate": "PENDING"
+        "specify": "PASSED",
+        "clarify": "PASSED",
+        "plan": "PASSED",
+        "tasks": "PASSED",
+        "analyze": "PASSED",
+        "implement": "PASSED",
+        "validate": "PASSED"
       }
     },
     {
@@ -295,13 +295,13 @@
       "spec_directory": "specs/010-vs010-graphify-integration",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "RUNNING",
-        "clarify": "PENDING",
-        "plan": "PENDING",
-        "tasks": "PENDING",
-        "analyze": "PENDING",
-        "implement": "PENDING",
-        "validate": "PENDING"
+        "specify": "PASSED",
+        "clarify": "PASSED",
+        "plan": "PASSED",
+        "tasks": "PASSED",
+        "analyze": "PASSED",
+        "implement": "PASSED",
+        "validate": "PASSED"
       }
     },
     {
@@ -326,13 +326,13 @@
       "spec_directory": "specs/011-vs011-obsidian-research-memory",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "RUNNING",
-        "clarify": "PENDING",
-        "plan": "PENDING",
-        "tasks": "PENDING",
-        "analyze": "PENDING",
-        "implement": "PENDING",
-        "validate": "PENDING"
+        "specify": "PASSED",
+        "clarify": "PASSED",
+        "plan": "PASSED",
+        "tasks": "PASSED",
+        "analyze": "PASSED",
+        "implement": "PASSED",
+        "validate": "PASSED"
       }
     },
     {
@@ -355,13 +355,13 @@
       "spec_directory": "specs/012-vs012-experiment-scaffolder",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "RUNNING",
-        "clarify": "PENDING",
-        "plan": "PENDING",
-        "tasks": "PENDING",
-        "analyze": "PENDING",
-        "implement": "PENDING",
-        "validate": "PENDING"
+        "specify": "PASSED",
+        "clarify": "PASSED",
+        "plan": "PASSED",
+        "tasks": "PASSED",
+        "analyze": "PASSED",
+        "implement": "PASSED",
+        "validate": "PASSED"
       }
     },
     {
@@ -384,13 +384,13 @@
       "spec_directory": "specs/013-vs013-latex-venue-scaffolder",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "RUNNING",
-        "clarify": "PENDING",
-        "plan": "PENDING",
-        "tasks": "PENDING",
-        "analyze": "PENDING",
-        "implement": "PENDING",
-        "validate": "PENDING"
+        "specify": "PASSED",
+        "clarify": "PASSED",
+        "plan": "PASSED",
+        "tasks": "PASSED",
+        "analyze": "PASSED",
+        "implement": "PASSED",
+        "validate": "PASSED"
       }
     },
     {
@@ -413,13 +413,13 @@
       "spec_directory": "specs/014-vs014-multimodal-artifacts",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "RUNNING",
-        "clarify": "PENDING",
-        "plan": "PENDING",
-        "tasks": "PENDING",
-        "analyze": "PENDING",
-        "implement": "PENDING",
-        "validate": "PENDING"
+        "specify": "PASSED",
+        "clarify": "PASSED",
+        "plan": "PASSED",
+        "tasks": "PASSED",
+        "analyze": "PASSED",
+        "implement": "PASSED",
+        "validate": "PASSED"
       }
     },
     {
@@ -445,13 +445,13 @@
       "spec_directory": "specs/015-vs015-cross-agent-handoff",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "RUNNING",
-        "clarify": "PENDING",
-        "plan": "PENDING",
-        "tasks": "PENDING",
-        "analyze": "PENDING",
-        "implement": "PENDING",
-        "validate": "PENDING"
+        "specify": "PASSED",
+        "clarify": "PASSED",
+        "plan": "PASSED",
+        "tasks": "PASSED",
+        "analyze": "PASSED",
+        "implement": "PASSED",
+        "validate": "PASSED"
       }
     },
     {
@@ -474,13 +474,13 @@
       "spec_directory": "specs/016-vs016-research-lineage",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "RUNNING",
-        "clarify": "PENDING",
-        "plan": "PENDING",
-        "tasks": "PENDING",
-        "analyze": "PENDING",
-        "implement": "PENDING",
-        "validate": "PENDING"
+        "specify": "PASSED",
+        "clarify": "PASSED",
+        "plan": "PASSED",
+        "tasks": "PASSED",
+        "analyze": "PASSED",
+        "implement": "PASSED",
+        "validate": "PASSED"
       }
     },
     {
@@ -505,17 +505,39 @@
       "spec_directory": "specs/017-vs017-doctor-validate-observability",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "RUNNING",
-        "clarify": "PENDING",
-        "plan": "PENDING",
-        "tasks": "PENDING",
-        "analyze": "PENDING",
-        "implement": "PENDING",
-        "validate": "PENDING"
+        "specify": "PASSED",
+        "clarify": "PASSED",
+        "plan": "PASSED",
+        "tasks": "PASSED",
+        "analyze": "PASSED",
+        "implement": "PASSED",
+        "validate": "PASSED"
       }
     }
   ],
-  "quality_gates": [],
+  "quality_gates": [
+    {
+      "name": "lint (python)",
+      "command": "ruff check .",
+      "result": "PASSED",
+      "exit_code": 0,
+      "blocking": false
+    },
+    {
+      "name": "type_check (python)",
+      "command": "mypy research_helper",
+      "result": "PASSED",
+      "exit_code": 0,
+      "blocking": false
+    },
+    {
+      "name": "test (python)",
+      "command": "pytest -q",
+      "result": "PASSED",
+      "exit_code": 0,
+      "blocking": true
+    }
+  ],
   "fingerprint": {
     "fundactional.md": "170134dc18e4626923fe3357c9939754a6e95a6df4f9fec13cf3166af29dcb52",
     "globalization.md": "3d9d172b0f8c9740e2cabab9b5d6c169f62b3720624aedcd5b419e8239bb4155",
