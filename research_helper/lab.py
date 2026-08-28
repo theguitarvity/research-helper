@@ -273,3 +273,10 @@ class LabPaths:
     @property
     def cache_dir(self) -> Path:
         return self.root / ".cache"
+
+    @property
+    def venues_dir(self) -> Path:
+        """Venue registry (VS013) — optional, lab-specific, created on
+        demand rather than by `init` (unlike the always-present
+        canonical directories in `LAB_SUBDIRS`)."""
+        return self.root / "venues"

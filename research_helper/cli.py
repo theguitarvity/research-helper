@@ -15,6 +15,7 @@ from research_helper.acquisition import HttpxDownloader, acquire_references
 from research_helper.citations import validate_citations
 from research_helper.experiments import init_experiment
 from research_helper.graph import build_graph
+from research_helper.paper_project import init_paper_project
 from research_helper.papers import import_paper
 from research_helper.references import (
     RawReference,
@@ -234,6 +235,21 @@ def experiment_init(
         reproduction_command=reproduction_command,
     )
     typer.echo(f"Experiment scaffolded at {exp_dir}")
+
+
+paper_app = typer.Typer(help="LaTeX paper project scaffolding.")
+app.add_typer(paper_app, name="paper")
+
+
+@paper_app.command("init")
+def paper_init(
+    venue: str = typer.Option(..., "--venue", help="Registered venue name (or 'generic')."),
+    name: str = typer.Option(..., "--name", help="Paper project name."),
+) -> None:
+    """Scaffold a LaTeX paper project against a registered venue template."""
+    paths = lab.LabPaths.resolve()
+    project_dir = init_paper_project(paths, venue=venue, name=name)
+    typer.echo(f"Paper project scaffolded at {project_dir}")
 
 
 if __name__ == "__main__":
