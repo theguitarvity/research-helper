@@ -262,11 +262,11 @@
         "globalization.md"
       ],
       "branch": null,
-      "status": "PENDING",
+      "status": "PASSED",
       "spec_directory": "specs/009-vs009-citation-validation",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "PENDING",
+        "specify": "RUNNING",
         "clarify": "PENDING",
         "plan": "PENDING",
         "tasks": "PENDING",
@@ -602,6 +602,16 @@
       "plan": "specs/008-vs008-structured-paper-synthesis/plan.md",
       "task": "specs/008-vs008-structured-paper-synthesis/tasks.md",
       "test": "tests/test_synthesis.py",
+      "status": "PASSED"
+    },
+    {
+      "requirement": "Three-level citation validation, UNVERIFIED precedes SUSPECTED_INVALID (FR-001..FR-006)",
+      "source": "fundactional.md §9, §35-36",
+      "feature": "vs009-citation-validation",
+      "spec": "specs/009-vs009-citation-validation/spec.md",
+      "plan": "specs/009-vs009-citation-validation/plan.md",
+      "task": "specs/009-vs009-citation-validation/tasks.md",
+      "test": "tests/test_citations.py",
       "status": "PASSED"
     }
   ]

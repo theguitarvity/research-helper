@@ -12,6 +12,7 @@ import typer
 
 from research_helper import lab
 from research_helper.acquisition import HttpxDownloader, acquire_references
+from research_helper.citations import validate_citations
 from research_helper.papers import import_paper
 from research_helper.references import (
     RawReference,
@@ -154,6 +155,30 @@ def summarize(
     sections = json.loads(Path(from_json).read_text())
     dest = write_individual_synthesis(paths, paper, PaperSynthesis(**sections))
     typer.echo(f"Synthesis written to {dest}")
+
+
+citations_app = typer.Typer(help="Citation validation.")
+app.add_typer(citations_app, name="citations")
+
+
+@citations_app.command("validate")
+def citations_validate_command(
+    paper: str = typer.Argument(..., help="Paper identifier under library/papers/."),
+    claims_json: str | None = typer.Option(
+        None, "--claims-json", help="Optional agent-computed Level-3 claim support data."
+    ),
+) -> None:
+    """Validate a paper's resolved references (existence + consistency + claim support)."""
+    paths = lab.LabPaths.resolve()
+    paper_dir = paths.library_papers_dir / paper
+    resolved = json.loads((paper_dir / "references.resolved.json").read_text())
+    refs = [ResolvedReference(**r) for r in resolved]
+    claims = json.loads(Path(claims_json).read_text()) if claims_json else None
+    validations = validate_citations(paper_dir, refs, claims)
+    counts: dict[str, int] = {}
+    for v in validations:
+        counts[v.existence_state] = counts.get(v.existence_state, 0) + 1
+    typer.echo(", ".join(f"{n} {state.lower()}" for state, n in counts.items()) or "0 validated")
 
 
 if __name__ == "__main__":
