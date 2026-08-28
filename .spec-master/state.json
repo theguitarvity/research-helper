@@ -204,11 +204,11 @@
         "globalization.md"
       ],
       "branch": null,
-      "status": "PENDING",
+      "status": "PASSED",
       "spec_directory": "specs/007-vs007-open-access-acquisition",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "PENDING",
+        "specify": "RUNNING",
         "clarify": "PENDING",
         "plan": "PENDING",
         "tasks": "PENDING",
@@ -582,6 +582,16 @@
       "plan": "specs/006-vs006-reference-resolution/plan.md",
       "task": "specs/006-vs006-reference-resolution/tasks.md",
       "test": "tests/test_reference_resolution.py",
+      "status": "PASSED"
+    },
+    {
+      "requirement": "Open Access acquisition with legal-priority download + cache (FR-001..FR-007)",
+      "source": "fundactional.md §27-28",
+      "feature": "vs007-open-access-acquisition",
+      "spec": "specs/007-vs007-open-access-acquisition/spec.md",
+      "plan": "specs/007-vs007-open-access-acquisition/plan.md",
+      "task": "specs/007-vs007-open-access-acquisition/tasks.md",
+      "test": "tests/test_acquisition.py",
       "status": "PASSED"
     }
   ]

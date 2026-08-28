@@ -115,6 +115,10 @@ class ResolvedReference(BaseModel):
     source: str | None = None
     state: str = "UNAVAILABLE"
     consistency_flags: list[str] = Field(default_factory=list)
+    pdf_url: str | None = None
+    open_access: bool = False
+    acquisition_state: str | None = None
+    local_path: str | None = None
 
 
 def extract_citation_year(raw_text: str) -> int | None:
@@ -185,6 +189,8 @@ def _to_resolved(
         source=candidate.source,
         state=state,
         consistency_flags=flags,
+        pdf_url=candidate.pdf_url,
+        open_access=candidate.open_access,
     )
 
 

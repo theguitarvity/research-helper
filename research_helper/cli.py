@@ -11,9 +11,11 @@ from pathlib import Path
 import typer
 
 from research_helper import lab
+from research_helper.acquisition import HttpxDownloader, acquire_references
 from research_helper.papers import import_paper
 from research_helper.references import (
     RawReference,
+    ResolvedReference,
     extract_references,
     resolve_references,
 )
@@ -121,6 +123,22 @@ def references_resolve(
     for r in resolved:
         counts[r.state] = counts.get(r.state, 0) + 1
     typer.echo(", ".join(f"{n} {state.lower()}" for state, n in counts.items()) or "0 resolved")
+
+
+@references_app.command("download")
+def references_download(
+    paper: str = typer.Argument(..., help="Paper identifier under library/papers/."),
+) -> None:
+    """Download open-access PDFs for a paper's resolved references."""
+    paths = lab.LabPaths.resolve()
+    paper_dir = paths.library_papers_dir / paper
+    resolved = json.loads((paper_dir / "references.resolved.json").read_text())
+    refs = [ResolvedReference(**r) for r in resolved]
+    updated = acquire_references(paths, paper_dir, refs, HttpxDownloader())
+    counts: dict[str, int] = {}
+    for r in updated:
+        counts[r.acquisition_state or "UNKNOWN"] = counts.get(r.acquisition_state or "UNKNOWN", 0) + 1
+    typer.echo(", ".join(f"{n} {state.lower()}" for state, n in counts.items()) or "nothing to download")
 
 
 if __name__ == "__main__":
