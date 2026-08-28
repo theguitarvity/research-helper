@@ -21,6 +21,7 @@ from research_helper.references import (
 )
 from research_helper.search import SearchClient, SearchQuery, run_search
 from research_helper.search_clients import CrossrefClient, OpenAlexClient, SemanticScholarClient
+from research_helper.synthesis import PaperSynthesis, write_individual_synthesis
 
 app = typer.Typer(help="Research Helper — agentic research engineering harness.")
 references_app = typer.Typer(help="Reference extraction/resolution/download.")
@@ -139,6 +140,20 @@ def references_download(
     for r in updated:
         counts[r.acquisition_state or "UNKNOWN"] = counts.get(r.acquisition_state or "UNKNOWN", 0) + 1
     typer.echo(", ".join(f"{n} {state.lower()}" for state, n in counts.items()) or "nothing to download")
+
+
+@app.command()
+def summarize(
+    paper: str = typer.Argument(..., help="Paper identifier under library/papers/."),
+    from_json: str = typer.Option(
+        ..., "--from-json", help="JSON file with agent-computed PaperSynthesis section content."
+    ),
+) -> None:
+    """Persist a structured synthesis for PAPER from agent-computed sections."""
+    paths = lab.LabPaths.resolve()
+    sections = json.loads(Path(from_json).read_text())
+    dest = write_individual_synthesis(paths, paper, PaperSynthesis(**sections))
+    typer.echo(f"Synthesis written to {dest}")
 
 
 if __name__ == "__main__":

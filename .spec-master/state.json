@@ -233,11 +233,11 @@
         "globalization.md"
       ],
       "branch": null,
-      "status": "PENDING",
+      "status": "PASSED",
       "spec_directory": "specs/008-vs008-structured-paper-synthesis",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "PENDING",
+        "specify": "RUNNING",
         "clarify": "PENDING",
         "plan": "PENDING",
         "tasks": "PENDING",
@@ -592,6 +592,16 @@
       "plan": "specs/007-vs007-open-access-acquisition/plan.md",
       "task": "specs/007-vs007-open-access-acquisition/tasks.md",
       "test": "tests/test_acquisition.py",
+      "status": "PASSED"
+    },
+    {
+      "requirement": "Structured per-paper + comparative synthesis (FR-001..FR-005)",
+      "source": "fundactional.md §11",
+      "feature": "vs008-structured-paper-synthesis",
+      "spec": "specs/008-vs008-structured-paper-synthesis/spec.md",
+      "plan": "specs/008-vs008-structured-paper-synthesis/plan.md",
+      "task": "specs/008-vs008-structured-paper-synthesis/tasks.md",
+      "test": "tests/test_synthesis.py",
       "status": "PASSED"
     }
   ]
