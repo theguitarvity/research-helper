@@ -291,11 +291,11 @@
         "globalization.md"
       ],
       "branch": null,
-      "status": "PENDING",
+      "status": "PASSED",
       "spec_directory": "specs/010-vs010-graphify-integration",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "PENDING",
+        "specify": "RUNNING",
         "clarify": "PENDING",
         "plan": "PENDING",
         "tasks": "PENDING",
@@ -612,6 +612,16 @@
       "plan": "specs/009-vs009-citation-validation/plan.md",
       "task": "specs/009-vs009-citation-validation/tasks.md",
       "test": "tests/test_citations.py",
+      "status": "PASSED"
+    },
+    {
+      "requirement": "File-based, Graphify-shaped citation graph (FR-001..FR-006)",
+      "source": "fundactional.md §12-13",
+      "feature": "vs010-graphify-integration",
+      "spec": "specs/010-vs010-graphify-integration/spec.md",
+      "plan": "specs/010-vs010-graphify-integration/plan.md",
+      "task": "specs/010-vs010-graphify-integration/tasks.md",
+      "test": "tests/test_graph.py",
       "status": "PASSED"
     }
   ]

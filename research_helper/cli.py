@@ -13,6 +13,7 @@ import typer
 from research_helper import lab
 from research_helper.acquisition import HttpxDownloader, acquire_references
 from research_helper.citations import validate_citations
+from research_helper.graph import build_graph
 from research_helper.papers import import_paper
 from research_helper.references import (
     RawReference,
@@ -179,6 +180,18 @@ def citations_validate_command(
     for v in validations:
         counts[v.existence_state] = counts.get(v.existence_state, 0) + 1
     typer.echo(", ".join(f"{n} {state.lower()}" for state, n in counts.items()) or "0 validated")
+
+
+graph_app = typer.Typer(help="Citation graph.")
+app.add_typer(graph_app, name="graph")
+
+
+@graph_app.command("build")
+def graph_build() -> None:
+    """Rebuild the citation graph from the library."""
+    paths = lab.LabPaths.resolve()
+    graph = build_graph(paths)
+    typer.echo(f"{len(graph.nodes)} nodes, {len(graph.edges)} edges")
 
 
 if __name__ == "__main__":
