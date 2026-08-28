@@ -409,11 +409,11 @@
         "globalization.md"
       ],
       "branch": null,
-      "status": "PENDING",
+      "status": "PASSED",
       "spec_directory": "specs/014-vs014-multimodal-artifacts",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "PENDING",
+        "specify": "RUNNING",
         "clarify": "PENDING",
         "plan": "PENDING",
         "tasks": "PENDING",
@@ -652,6 +652,16 @@
       "plan": "specs/013-vs013-latex-venue-scaffolder/plan.md",
       "task": "specs/013-vs013-latex-venue-scaffolder/tasks.md",
       "test": "tests/test_paper_project.py",
+      "status": "PASSED"
+    },
+    {
+      "requirement": "Multimodal figure artifacts + capability delegation (FR-001..FR-004)",
+      "source": "fundactional.md §18, §39",
+      "feature": "vs014-multimodal-artifacts",
+      "spec": "specs/014-vs014-multimodal-artifacts/spec.md",
+      "plan": "specs/014-vs014-multimodal-artifacts/plan.md",
+      "task": "specs/014-vs014-multimodal-artifacts/tasks.md",
+      "test": "tests/test_multimodal.py",
       "status": "PASSED"
     }
   ]
