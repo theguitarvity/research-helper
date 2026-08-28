@@ -25,17 +25,17 @@
         "globalization.md"
       ],
       "branch": null,
-      "status": "PENDING",
+      "status": "PASSED",
       "spec_directory": "specs/001-vs001-research-lab-foundation",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "PENDING",
-        "clarify": "PENDING",
-        "plan": "PENDING",
-        "tasks": "PENDING",
-        "analyze": "PENDING",
-        "implement": "PENDING",
-        "validate": "PENDING"
+        "specify": "PASSED",
+        "clarify": "PASSED",
+        "plan": "PASSED",
+        "tasks": "PASSED",
+        "analyze": "PASSED",
+        "implement": "PASSED",
+        "validate": "PASSED"
       }
     },
     {
@@ -522,5 +522,17 @@
     "app-features.md": "043f7bc1e37eb6d80733a7c47c737bb6b42046f37899aca8cfa8643cec4e77ff",
     "project-goals.md": "77836c168679605975ad6991e83f4c0468c36071f86f57a864cb2ad52444343f",
     "tech-stack.md": "5eb12e1da2d19c582bb6322887c56c2ddfaa0e20e2904b8eb2ee8f77f9dccfb7"
-  }
+  },
+  "traceability": [
+    {
+      "requirement": "Research Lab scaffolding (FR-001..FR-007)",
+      "source": "fundactional.md §24, §67-70",
+      "feature": "vs001-research-lab-foundation",
+      "spec": "specs/001-vs001-research-lab-foundation/spec.md",
+      "plan": "specs/001-vs001-research-lab-foundation/plan.md",
+      "task": "specs/001-vs001-research-lab-foundation/tasks.md",
+      "test": "tests/test_lab.py, tests/test_cli_init.py",
+      "status": "PASSED"
+    }
+  ]
 }
