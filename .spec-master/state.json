@@ -501,11 +501,11 @@
         "globalization.md"
       ],
       "branch": null,
-      "status": "PENDING",
+      "status": "PASSED",
       "spec_directory": "specs/017-vs017-doctor-validate-observability",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "PENDING",
+        "specify": "RUNNING",
         "clarify": "PENDING",
         "plan": "PENDING",
         "tasks": "PENDING",
@@ -682,6 +682,16 @@
       "plan": "specs/016-vs016-research-lineage/plan.md",
       "task": "specs/016-vs016-research-lineage/tasks.md",
       "test": "tests/test_lineage.py",
+      "status": "PASSED"
+    },
+    {
+      "requirement": "doctor + validate + observability + global config + bootstrap (FR-001..FR-006)",
+      "source": "fundactional.md §40,48,63; globalization.md §61.3,62,64",
+      "feature": "vs017-doctor-validate-observability",
+      "spec": "specs/017-vs017-doctor-validate-observability/spec.md",
+      "plan": "specs/017-vs017-doctor-validate-observability/plan.md",
+      "task": "specs/017-vs017-doctor-validate-observability/tasks.md",
+      "test": "tests/test_doctor.py, tests/test_validate.py, tests/test_observability.py, tests/test_config.py",
       "status": "PASSED"
     }
   ]

@@ -13,6 +13,7 @@ import typer
 from research_helper import lab
 from research_helper.acquisition import HttpxDownloader, acquire_references
 from research_helper.citations import validate_citations
+from research_helper.doctor import render_doctor_report, run_doctor
 from research_helper.experiments import init_experiment
 from research_helper.graph import build_graph
 from research_helper.handoff import create_handoff
@@ -28,6 +29,7 @@ from research_helper.references import (
 from research_helper.search import SearchClient, SearchQuery, run_search
 from research_helper.search_clients import CrossrefClient, OpenAlexClient, SemanticScholarClient
 from research_helper.synthesis import PaperSynthesis, write_individual_synthesis
+from research_helper.validate import validate as validate_lab
 from research_helper.vault import sync_vault, write_current_context
 
 app = typer.Typer(help="Research Helper — agentic research engineering harness.")
@@ -278,6 +280,31 @@ def resume() -> None:
         typer.echo("No handoff found.")
         raise typer.Exit(code=1)
     typer.echo(json.dumps(record.model_dump(mode="json"), indent=2))
+
+
+@app.command()
+def doctor() -> None:
+    """Detect the environment and report tool/agent availability."""
+    try:
+        paths = lab.LabPaths.resolve()
+    except FileNotFoundError:
+        paths = None
+    report = run_doctor(paths)
+    typer.echo(render_doctor_report(report))
+
+
+@app.command()
+def validate() -> None:
+    """Run every structural quality gate over the current Research Lab."""
+    paths = lab.LabPaths.resolve()
+    issues = validate_lab(paths)
+    if not issues:
+        typer.echo("0 issues found.")
+        return
+    for issue in issues:
+        typer.echo(f"[{issue.gate}] {issue.path}: {issue.message}")
+    typer.echo(f"\n{len(issues)} issue(s) found.")
+    raise typer.Exit(code=1)
 
 
 if __name__ == "__main__":
