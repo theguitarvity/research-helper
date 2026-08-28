@@ -470,11 +470,11 @@
         "globalization.md"
       ],
       "branch": null,
-      "status": "PENDING",
+      "status": "PASSED",
       "spec_directory": "specs/016-vs016-research-lineage",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "PENDING",
+        "specify": "RUNNING",
         "clarify": "PENDING",
         "plan": "PENDING",
         "tasks": "PENDING",
@@ -672,6 +672,16 @@
       "plan": "specs/015-vs015-cross-agent-handoff/plan.md",
       "task": "specs/015-vs015-cross-agent-handoff/tasks.md",
       "test": "tests/test_handoff.py",
+      "status": "PASSED"
+    },
+    {
+      "requirement": "Research lineage chain with mandatory SOURCE_FACT/AGENT_INTERPRETATION/RESEARCHER_DECISION classification (FR-001..FR-004)",
+      "source": "fundactional.md §10, §37",
+      "feature": "vs016-research-lineage",
+      "spec": "specs/016-vs016-research-lineage/spec.md",
+      "plan": "specs/016-vs016-research-lineage/plan.md",
+      "task": "specs/016-vs016-research-lineage/tasks.md",
+      "test": "tests/test_lineage.py",
       "status": "PASSED"
     }
   ]
