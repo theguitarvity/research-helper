@@ -1,0 +1,526 @@
+{
+  "version": 1,
+  "context": "context/fundactional.md,context/globalization.md",
+  "workflow": "trunk",
+  "status": "FEATURES_IDENTIFIED",
+  "constitution": {
+    "status": "VALIDATED",
+    "version": "1.0.0",
+    "path": ".specify/memory/constitution.md"
+  },
+  "features": [
+    {
+      "id": "vs001-research-lab-foundation",
+      "name": "Research Lab Foundation",
+      "description": "Scaffold a Research Lab (.agent/, research/, library/, literature/, experiments/, papers/, graph/, vault/, logs/, research-helper.yaml) with portable, workspace-relative paths and the global CLI entrypoint.",
+      "acceptance_criteria": [
+        "init is idempotent",
+        "explicit-path init works",
+        "no absolute/OS-specific path is ever persisted",
+        ".agent/ has agents/, skills/, scripts/, schemas/, templates/, state/, adapters/"
+      ],
+      "dependencies": [],
+      "source_requirements": [
+        "fundactional.md",
+        "globalization.md"
+      ],
+      "branch": null,
+      "status": "PENDING",
+      "spec_directory": "specs/001-vs001-research-lab-foundation",
+      "analyze_repair_cycles": 0,
+      "phases": {
+        "specify": "PENDING",
+        "clarify": "PENDING",
+        "plan": "PENDING",
+        "tasks": "PENDING",
+        "analyze": "PENDING",
+        "implement": "PENDING",
+        "validate": "PENDING"
+      }
+    },
+    {
+      "id": "vs002-research-task-state",
+      "name": "Research Task + State",
+      "description": "Model a Research Task as an agent-independent unit of work with explicit status/step tracking, backed by .agent/state/{session,active-task,research-state}.json.",
+      "acceptance_criteria": [
+        "task persists under .agent/state and reconstructs after a fresh process",
+        "agent_history accumulates every agent that touched the task"
+      ],
+      "dependencies": [
+        "vs001-research-lab-foundation"
+      ],
+      "source_requirements": [
+        "fundactional.md",
+        "globalization.md"
+      ],
+      "branch": null,
+      "status": "PENDING",
+      "spec_directory": "specs/002-vs002-research-task-state",
+      "analyze_repair_cycles": 0,
+      "phases": {
+        "specify": "PENDING",
+        "clarify": "PENDING",
+        "plan": "PENDING",
+        "tasks": "PENDING",
+        "analyze": "PENDING",
+        "implement": "PENDING",
+        "validate": "PENDING"
+      }
+    },
+    {
+      "id": "vs003-scientific-search",
+      "name": "Scientific Search",
+      "description": "literature-search skill: structured search across Semantic Scholar/Crossref/OpenAlex, normalized schema, dedup by DOI/title/authors+year, reproducible search manifest.",
+      "acceptance_criteria": [
+        "search --format json returns deduplicated schema-conformant results",
+        "search manifest written and re-executable",
+        "network calls go through mockable client adapters"
+      ],
+      "dependencies": [
+        "vs002-research-task-state"
+      ],
+      "source_requirements": [
+        "fundactional.md",
+        "globalization.md"
+      ],
+      "branch": null,
+      "status": "PENDING",
+      "spec_directory": "specs/003-vs003-scientific-search",
+      "analyze_repair_cycles": 0,
+      "phases": {
+        "specify": "PENDING",
+        "clarify": "PENDING",
+        "plan": "PENDING",
+        "tasks": "PENDING",
+        "analyze": "PENDING",
+        "implement": "PENDING",
+        "validate": "PENDING"
+      }
+    },
+    {
+      "id": "vs004-paper-import",
+      "name": "Paper Import",
+      "description": "Import a PDF (or metadata-only record) into library/papers/<doi-or-hash>/ with provenance (source, original_url, doi, retrieved_at, sha256, license, open_access).",
+      "acceptance_criteria": [
+        "import creates identifier dir with sha256 provenance",
+        "re-import of identical file is detected, not duplicated",
+        "import without DOI falls back to hash id"
+      ],
+      "dependencies": [
+        "vs002-research-task-state"
+      ],
+      "source_requirements": [
+        "fundactional.md",
+        "globalization.md"
+      ],
+      "branch": null,
+      "status": "PENDING",
+      "spec_directory": "specs/004-vs004-paper-import",
+      "analyze_repair_cycles": 0,
+      "phases": {
+        "specify": "PENDING",
+        "clarify": "PENDING",
+        "plan": "PENDING",
+        "tasks": "PENDING",
+        "analyze": "PENDING",
+        "implement": "PENDING",
+        "validate": "PENDING"
+      }
+    },
+    {
+      "id": "vs005-reference-extraction",
+      "name": "Reference Extraction",
+      "description": "reference-harvester (extraction half): PDF -> references.raw.json / references.normalized.json via text/structured extraction, reference-section detection, parsing, DOI extraction.",
+      "acceptance_criteria": [
+        "extract reports discovered-reference count",
+        "deterministic given the same PDF, no LLM call needed",
+        "output validates against reference schema"
+      ],
+      "dependencies": [
+        "vs004-paper-import"
+      ],
+      "source_requirements": [
+        "fundactional.md",
+        "globalization.md"
+      ],
+      "branch": null,
+      "status": "PENDING",
+      "spec_directory": "specs/005-vs005-reference-extraction",
+      "analyze_repair_cycles": 0,
+      "phases": {
+        "specify": "PENDING",
+        "clarify": "PENDING",
+        "plan": "PENDING",
+        "tasks": "PENDING",
+        "analyze": "PENDING",
+        "implement": "PENDING",
+        "validate": "PENDING"
+      }
+    },
+    {
+      "id": "vs006-reference-resolution",
+      "name": "Reference Resolution",
+      "description": "Resolve raw references to real external documents (references.resolved.json) with states RESOLVED/VERIFIED/AMBIGUOUS/UNAVAILABLE/INVALID, flagging bibliographic-consistency mismatches, never trusting the citing paper alone.",
+      "acceptance_criteria": [
+        "resolve reports verified/ambiguous/unavailable/unresolved counts",
+        "year/author mismatch surfaced as flagged inconsistency",
+        "references.bib emitted alongside JSON"
+      ],
+      "dependencies": [
+        "vs005-reference-extraction",
+        "vs003-scientific-search"
+      ],
+      "source_requirements": [
+        "fundactional.md",
+        "globalization.md"
+      ],
+      "branch": null,
+      "status": "PENDING",
+      "spec_directory": "specs/006-vs006-reference-resolution",
+      "analyze_repair_cycles": 0,
+      "phases": {
+        "specify": "PENDING",
+        "clarify": "PENDING",
+        "plan": "PENDING",
+        "tasks": "PENDING",
+        "analyze": "PENDING",
+        "implement": "PENDING",
+        "validate": "PENDING"
+      }
+    },
+    {
+      "id": "vs007-open-access-acquisition",
+      "name": "Open Access Acquisition",
+      "description": "Download resolved references only when legally available, recording METADATA_ONLY/PAYWALLED otherwise, with .cache/ to avoid redundant external calls.",
+      "acceptance_criteria": [
+        "download only writes PDFs for OA-available refs; others get PAYWALLED/METADATA_ONLY and stay in the graph",
+        "repeated download call is a cache hit"
+      ],
+      "dependencies": [
+        "vs006-reference-resolution"
+      ],
+      "source_requirements": [
+        "fundactional.md",
+        "globalization.md"
+      ],
+      "branch": null,
+      "status": "PENDING",
+      "spec_directory": "specs/007-vs007-open-access-acquisition",
+      "analyze_repair_cycles": 0,
+      "phases": {
+        "specify": "PENDING",
+        "clarify": "PENDING",
+        "plan": "PENDING",
+        "tasks": "PENDING",
+        "analyze": "PENDING",
+        "implement": "PENDING",
+        "validate": "PENDING"
+      }
+    },
+    {
+      "id": "vs008-structured-paper-synthesis",
+      "name": "Structured Paper Synthesis",
+      "description": "paper-synthesizer skill: full structured synthesis schema per paper plus comparison/disagreements/common-findings/research-gaps across papers.",
+      "acceptance_criteria": [
+        "summarize produces every schema section, marking unsupported sections as Not defined by current context, never fabricated",
+        "comparative synthesis across >=2 papers produces all four cross-paper artifacts"
+      ],
+      "dependencies": [
+        "vs004-paper-import"
+      ],
+      "source_requirements": [
+        "fundactional.md",
+        "globalization.md"
+      ],
+      "branch": null,
+      "status": "PENDING",
+      "spec_directory": "specs/008-vs008-structured-paper-synthesis",
+      "analyze_repair_cycles": 0,
+      "phases": {
+        "specify": "PENDING",
+        "clarify": "PENDING",
+        "plan": "PENDING",
+        "tasks": "PENDING",
+        "analyze": "PENDING",
+        "implement": "PENDING",
+        "validate": "PENDING"
+      }
+    },
+    {
+      "id": "vs009-citation-validation",
+      "name": "Citation Validation",
+      "description": "citation-validator skill: three-level evaluation (Existence, Bibliographic Consistency, Claim Support) with stored evidence, justification, and confidence; UNVERIFIED precedes SUSPECTED_INVALID.",
+      "acceptance_criteria": [
+        "citations validate emits Level 1/2/3 result per citation with evidence+confidence",
+        "no citation is SUSPECTED_INVALID without first passing through UNVERIFIED"
+      ],
+      "dependencies": [
+        "vs006-reference-resolution"
+      ],
+      "source_requirements": [
+        "fundactional.md",
+        "globalization.md"
+      ],
+      "branch": null,
+      "status": "PENDING",
+      "spec_directory": "specs/009-vs009-citation-validation",
+      "analyze_repair_cycles": 0,
+      "phases": {
+        "specify": "PENDING",
+        "clarify": "PENDING",
+        "plan": "PENDING",
+        "tasks": "PENDING",
+        "analyze": "PENDING",
+        "implement": "PENDING",
+        "validate": "PENDING"
+      }
+    },
+    {
+      "id": "vs010-graphify-integration",
+      "name": "Graphify Integration",
+      "description": "Build a file-based, Graphify-compatible citation graph (CITES and the full §13 node/relation vocabulary) derived from resolved references, no hand-maintained graph state.",
+      "acceptance_criteria": [
+        "graph build is idempotent/re-runnable from the same library",
+        "seminal-paper / isolated-claim style queries answerable from the built graph"
+      ],
+      "dependencies": [
+        "vs006-reference-resolution"
+      ],
+      "source_requirements": [
+        "fundactional.md",
+        "globalization.md"
+      ],
+      "branch": null,
+      "status": "PENDING",
+      "spec_directory": "specs/010-vs010-graphify-integration",
+      "analyze_repair_cycles": 0,
+      "phases": {
+        "specify": "PENDING",
+        "clarify": "PENDING",
+        "plan": "PENDING",
+        "tasks": "PENDING",
+        "analyze": "PENDING",
+        "implement": "PENDING",
+        "validate": "PENDING"
+      }
+    },
+    {
+      "id": "vs011-obsidian-research-memory",
+      "name": "Obsidian Research Memory",
+      "description": "Generate/sync an Obsidian-compatible vault (Papers/Authors/Concepts/Claims/.../Maps) by script (never hand-written LLM links) plus research/memory/current-context.md and friends.",
+      "acceptance_criteria": [
+        "vault sync is idempotent and derives links only from resolved data",
+        "current-context.md answers all required context questions"
+      ],
+      "dependencies": [
+        "vs008-structured-paper-synthesis",
+        "vs009-citation-validation",
+        "vs010-graphify-integration"
+      ],
+      "source_requirements": [
+        "fundactional.md",
+        "globalization.md"
+      ],
+      "branch": null,
+      "status": "PENDING",
+      "spec_directory": "specs/011-vs011-obsidian-research-memory",
+      "analyze_repair_cycles": 0,
+      "phases": {
+        "specify": "PENDING",
+        "clarify": "PENDING",
+        "plan": "PENDING",
+        "tasks": "PENDING",
+        "analyze": "PENDING",
+        "implement": "PENDING",
+        "validate": "PENDING"
+      }
+    },
+    {
+      "id": "vs012-experiment-scaffolder",
+      "name": "Experiment Scaffolder",
+      "description": "experiment init <name> scaffolds README/hypothesis/protocol/environment/src/scripts/datasets/raw/results/analysis/figures/logs/manifest.yaml matching the experiment manifest schema.",
+      "acceptance_criteria": [
+        "experiment init creates the full structure with a valid manifest.yaml",
+        "reproduction command recorded is the literal command needed to reproduce the run"
+      ],
+      "dependencies": [
+        "vs002-research-task-state"
+      ],
+      "source_requirements": [
+        "fundactional.md",
+        "globalization.md"
+      ],
+      "branch": null,
+      "status": "PENDING",
+      "spec_directory": "specs/012-vs012-experiment-scaffolder",
+      "analyze_repair_cycles": 0,
+      "phases": {
+        "specify": "PENDING",
+        "clarify": "PENDING",
+        "plan": "PENDING",
+        "tasks": "PENDING",
+        "analyze": "PENDING",
+        "implement": "PENDING",
+        "validate": "PENDING"
+      }
+    },
+    {
+      "id": "vs013-latex-venue-scaffolder",
+      "name": "LaTeX / Venue Scaffolder",
+      "description": "latex-scaffolder + venue registry: paper init --venue <v> --name <n> scaffolds an academic LaTeX project against a registered, provenance-tracked venue template, never inventing formatting requirements.",
+      "acceptance_criteria": [
+        "paper init fails clearly (not fabricated) for an unregistered venue",
+        "generated project builds with the scaffolded Makefile or reports LATEX MISSING"
+      ],
+      "dependencies": [
+        "vs002-research-task-state"
+      ],
+      "source_requirements": [
+        "fundactional.md",
+        "globalization.md"
+      ],
+      "branch": null,
+      "status": "PENDING",
+      "spec_directory": "specs/013-vs013-latex-venue-scaffolder",
+      "analyze_repair_cycles": 0,
+      "phases": {
+        "specify": "PENDING",
+        "clarify": "PENDING",
+        "plan": "PENDING",
+        "tasks": "PENDING",
+        "analyze": "PENDING",
+        "implement": "PENDING",
+        "validate": "PENDING"
+      }
+    },
+    {
+      "id": "vs014-multimodal-artifacts",
+      "name": "Multimodal Artifacts",
+      "description": "Treat figures/tables as first-class persisted entities (png + json sidecar + analysis.md); record explicit CAPABILITY_UNAVAILABLE delegation tasks instead of silently skipping analysis.",
+      "acceptance_criteria": [
+        "every extracted figure/table has both the human file and structured JSON sidecar",
+        "a capability gap creates a recorded delegation task, never a silent skip"
+      ],
+      "dependencies": [
+        "vs004-paper-import"
+      ],
+      "source_requirements": [
+        "fundactional.md",
+        "globalization.md"
+      ],
+      "branch": null,
+      "status": "PENDING",
+      "spec_directory": "specs/014-vs014-multimodal-artifacts",
+      "analyze_repair_cycles": 0,
+      "phases": {
+        "specify": "PENDING",
+        "clarify": "PENDING",
+        "plan": "PENDING",
+        "tasks": "PENDING",
+        "analyze": "PENDING",
+        "implement": "PENDING",
+        "validate": "PENDING"
+      }
+    },
+    {
+      "id": "vs015-cross-agent-handoff",
+      "name": "Cross-Agent Handoff",
+      "description": "handoff create / resume: persist enough state in .agent/state/handoff.{md,json} that a different agent/model resumes without chat history.",
+      "acceptance_criteria": [
+        "handoff create -> fresh process -> resume reconstructs objective/current task/open questions/next steps",
+        "handoff.md and handoff.json never diverge on shared facts"
+      ],
+      "dependencies": [
+        "vs011-obsidian-research-memory",
+        "vs012-experiment-scaffolder",
+        "vs013-latex-venue-scaffolder",
+        "vs014-multimodal-artifacts"
+      ],
+      "source_requirements": [
+        "fundactional.md",
+        "globalization.md"
+      ],
+      "branch": null,
+      "status": "PENDING",
+      "spec_directory": "specs/015-vs015-cross-agent-handoff",
+      "analyze_repair_cycles": 0,
+      "phases": {
+        "specify": "PENDING",
+        "clarify": "PENDING",
+        "plan": "PENDING",
+        "tasks": "PENDING",
+        "analyze": "PENDING",
+        "implement": "PENDING",
+        "validate": "PENDING"
+      }
+    },
+    {
+      "id": "vs016-research-lineage",
+      "name": "Research Lineage",
+      "description": "Maintain the Question -> Search -> Papers -> Claims -> Hypothesis -> Experiment -> Evidence -> Result -> Paper Section lineage chain so any claim's origin is reconstructable, distinguishing SOURCE FACT / AGENT INTERPRETATION / RESEARCHER DECISION.",
+      "acceptance_criteria": [
+        "a paper-section claim's lineage can be walked backward to its originating evidence and resolved paper",
+        "no lineage node mixes SOURCE FACT with AGENT INTERPRETATION in the same field"
+      ],
+      "dependencies": [
+        "vs015-cross-agent-handoff"
+      ],
+      "source_requirements": [
+        "fundactional.md",
+        "globalization.md"
+      ],
+      "branch": null,
+      "status": "PENDING",
+      "spec_directory": "specs/016-vs016-research-lineage",
+      "analyze_repair_cycles": 0,
+      "phases": {
+        "specify": "PENDING",
+        "clarify": "PENDING",
+        "plan": "PENDING",
+        "tasks": "PENDING",
+        "analyze": "PENDING",
+        "implement": "PENDING",
+        "validate": "PENDING"
+      }
+    },
+    {
+      "id": "vs017-doctor-validate-observability",
+      "name": "Doctor / Validation / Observability",
+      "description": "research-helper doctor + validate, JSONL observability logs, global config/cache resolution, and cross-platform bootstrap scripts (bootstrap.py/.sh/.ps1).",
+      "acceptance_criteria": [
+        "doctor runs on macOS and reports accurate detection",
+        "validate fails loudly with an itemized report on deliberately broken fixtures",
+        "no log line contains a secret value",
+        "global config path resolution implemented for all four OS branches (unit-tested via mocked sys.platform where not natively runnable)"
+      ],
+      "dependencies": [
+        "vs016-research-lineage"
+      ],
+      "source_requirements": [
+        "fundactional.md",
+        "globalization.md"
+      ],
+      "branch": null,
+      "status": "PENDING",
+      "spec_directory": "specs/017-vs017-doctor-validate-observability",
+      "analyze_repair_cycles": 0,
+      "phases": {
+        "specify": "PENDING",
+        "clarify": "PENDING",
+        "plan": "PENDING",
+        "tasks": "PENDING",
+        "analyze": "PENDING",
+        "implement": "PENDING",
+        "validate": "PENDING"
+      }
+    }
+  ],
+  "quality_gates": [],
+  "fingerprint": {
+    "fundactional.md": "170134dc18e4626923fe3357c9939754a6e95a6df4f9fec13cf3166af29dcb52",
+    "globalization.md": "3d9d172b0f8c9740e2cabab9b5d6c169f62b3720624aedcd5b419e8239bb4155",
+    "app-features.md": "043f7bc1e37eb6d80733a7c47c737bb6b42046f37899aca8cfa8643cec4e77ff",
+    "project-goals.md": "77836c168679605975ad6991e83f4c0468c36071f86f57a864cb2ad52444343f",
+    "tech-stack.md": "5eb12e1da2d19c582bb6322887c56c2ddfaa0e20e2904b8eb2ee8f77f9dccfb7"
+  }
+}
