@@ -144,11 +144,11 @@
         "globalization.md"
       ],
       "branch": null,
-      "status": "PENDING",
+      "status": "PASSED",
       "spec_directory": "specs/005-vs005-reference-extraction",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "PENDING",
+        "specify": "RUNNING",
         "clarify": "PENDING",
         "plan": "PENDING",
         "tasks": "PENDING",
@@ -562,6 +562,16 @@
       "plan": "specs/004-vs004-paper-import/plan.md",
       "task": "specs/004-vs004-paper-import/tasks.md",
       "test": "tests/test_papers.py",
+      "status": "PASSED"
+    },
+    {
+      "requirement": "Reference extraction pipeline (FR-001..FR-006)",
+      "source": "fundactional.md §8, §52",
+      "feature": "vs005-reference-extraction",
+      "spec": "specs/005-vs005-reference-extraction/spec.md",
+      "plan": "specs/005-vs005-reference-extraction/plan.md",
+      "task": "specs/005-vs005-reference-extraction/tasks.md",
+      "test": "tests/test_references.py",
       "status": "PASSED"
     }
   ]

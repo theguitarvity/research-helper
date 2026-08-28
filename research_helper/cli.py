@@ -12,10 +12,13 @@ import typer
 
 from research_helper import lab
 from research_helper.papers import import_paper
+from research_helper.references import extract_references
 from research_helper.search import SearchClient, SearchQuery, run_search
 from research_helper.search_clients import CrossrefClient, OpenAlexClient, SemanticScholarClient
 
 app = typer.Typer(help="Research Helper — agentic research engineering harness.")
+references_app = typer.Typer(help="Reference extraction/resolution/download.")
+app.add_typer(references_app, name="references")
 
 _ALL_CLIENTS: dict[str, SearchClient] = {
     "semantic-scholar": SemanticScholarClient(),
@@ -86,6 +89,17 @@ def search(
         typer.echo(f"{len(results)} result(s) found.")
         for r in results:
             typer.echo(f"- {r.title} ({r.year or '?'}) [{r.source}]")
+
+
+@references_app.command("extract")
+def references_extract(
+    paper: str = typer.Argument(..., help="Paper identifier under library/papers/."),
+) -> None:
+    """Extract references from an imported paper's PDF."""
+    paths = lab.LabPaths.resolve()
+    paper_dir = paths.library_papers_dir / paper
+    refs = extract_references(paper_dir)
+    typer.echo(f"{len(refs)} references discovered")
 
 
 if __name__ == "__main__":
