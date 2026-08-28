@@ -114,11 +114,11 @@
         "globalization.md"
       ],
       "branch": null,
-      "status": "PENDING",
+      "status": "PASSED",
       "spec_directory": "specs/004-vs004-paper-import",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "PENDING",
+        "specify": "RUNNING",
         "clarify": "PENDING",
         "plan": "PENDING",
         "tasks": "PENDING",
@@ -552,6 +552,16 @@
       "plan": "specs/003-vs003-scientific-search/plan.md",
       "task": "specs/003-vs003-scientific-search/tasks.md",
       "test": "tests/test_search.py, tests/test_search_clients.py",
+      "status": "PASSED"
+    },
+    {
+      "requirement": "Paper import with stable identifier + provenance (FR-001..FR-005)",
+      "source": "fundactional.md §25-26",
+      "feature": "vs004-paper-import",
+      "spec": "specs/004-vs004-paper-import/spec.md",
+      "plan": "specs/004-vs004-paper-import/plan.md",
+      "task": "specs/004-vs004-paper-import/tasks.md",
+      "test": "tests/test_papers.py",
       "status": "PASSED"
     }
   ]

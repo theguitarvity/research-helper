@@ -11,6 +11,7 @@ from pathlib import Path
 import typer
 
 from research_helper import lab
+from research_helper.papers import import_paper
 from research_helper.search import SearchClient, SearchQuery, run_search
 from research_helper.search_clients import CrossrefClient, OpenAlexClient, SemanticScholarClient
 
@@ -38,6 +39,22 @@ def init(
     target = Path(path) if path else Path.cwd()
     root = lab.scaffold(target)
     typer.echo(f"Research Lab ready at {root}")
+
+
+@app.command(name="import")
+def import_command(
+    file: str = typer.Argument(..., help="Path to the PDF to import."),
+    doi: str | None = typer.Option(None, "--doi"),
+    source: str = typer.Option("researcher-supplied", "--source"),
+    license: str | None = typer.Option(None, "--license"),
+    open_access: bool = typer.Option(False, "--open-access"),
+) -> None:
+    """Import a PDF into the library under a stable, provenance-tracked id."""
+    paths = lab.LabPaths.resolve()
+    paper_dir = import_paper(
+        paths, Path(file), doi=doi, source=source, license=license, open_access=open_access
+    )
+    typer.echo(f"Imported into {paper_dir}")
 
 
 @app.command()
