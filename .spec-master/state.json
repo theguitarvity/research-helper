@@ -441,11 +441,11 @@
         "globalization.md"
       ],
       "branch": null,
-      "status": "PENDING",
+      "status": "PASSED",
       "spec_directory": "specs/015-vs015-cross-agent-handoff",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "PENDING",
+        "specify": "RUNNING",
         "clarify": "PENDING",
         "plan": "PENDING",
         "tasks": "PENDING",
@@ -662,6 +662,16 @@
       "plan": "specs/014-vs014-multimodal-artifacts/plan.md",
       "task": "specs/014-vs014-multimodal-artifacts/tasks.md",
       "test": "tests/test_multimodal.py",
+      "status": "PASSED"
+    },
+    {
+      "requirement": "Cross-agent handoff, single record renders md+json (FR-001..FR-004)",
+      "source": "fundactional.md §16-17",
+      "feature": "vs015-cross-agent-handoff",
+      "spec": "specs/015-vs015-cross-agent-handoff/spec.md",
+      "plan": "specs/015-vs015-cross-agent-handoff/plan.md",
+      "task": "specs/015-vs015-cross-agent-handoff/tasks.md",
+      "test": "tests/test_handoff.py",
       "status": "PASSED"
     }
   ]

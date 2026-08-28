@@ -15,6 +15,8 @@ from research_helper.acquisition import HttpxDownloader, acquire_references
 from research_helper.citations import validate_citations
 from research_helper.experiments import init_experiment
 from research_helper.graph import build_graph
+from research_helper.handoff import create_handoff
+from research_helper.handoff import resume as resume_handoff
 from research_helper.paper_project import init_paper_project
 from research_helper.papers import import_paper
 from research_helper.references import (
@@ -250,6 +252,32 @@ def paper_init(
     paths = lab.LabPaths.resolve()
     project_dir = init_paper_project(paths, venue=venue, name=name)
     typer.echo(f"Paper project scaffolded at {project_dir}")
+
+
+handoff_app = typer.Typer(help="Cross-agent handoff.")
+app.add_typer(handoff_app, name="handoff")
+
+
+@handoff_app.command("create")
+def handoff_create_command(
+    agent: str = typer.Option(..., "--agent", help="Name of the agent creating this handoff."),
+    status: str = typer.Option("in-progress", "--status"),
+) -> None:
+    """Persist a handoff (handoff.md + handoff.json) for the next agent."""
+    paths = lab.LabPaths.resolve()
+    record = create_handoff(paths, agent=agent, status=status)
+    typer.echo(f"Handoff written for session {record.session}")
+
+
+@app.command()
+def resume() -> None:
+    """Reconstruct the latest handoff without any chat history."""
+    paths = lab.LabPaths.resolve()
+    record = resume_handoff(paths)
+    if record is None:
+        typer.echo("No handoff found.")
+        raise typer.Exit(code=1)
+    typer.echo(json.dumps(record.model_dump(mode="json"), indent=2))
 
 
 if __name__ == "__main__":
