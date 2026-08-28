@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+dist/
+build/
+
+# uv
+.uv/
+
+# Secrets / credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+secrets.*
+
+# Claude Code local/session state (never versioned)
+.claude/settings.local.json
+.claude/.credentials.json
+
+# Research Lab local caches (regenerable, may contain large binaries)
+.cache/
+library/papers/**/*.pdf
+logs/*.jsonl
+
+# OS
+.DS_Store
+Thumbs.db
