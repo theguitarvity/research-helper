@@ -54,11 +54,11 @@
         "globalization.md"
       ],
       "branch": null,
-      "status": "PENDING",
+      "status": "PASSED",
       "spec_directory": "specs/002-vs002-research-task-state",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "PENDING",
+        "specify": "RUNNING",
         "clarify": "PENDING",
         "plan": "PENDING",
         "tasks": "PENDING",
@@ -532,6 +532,16 @@
       "plan": "specs/001-vs001-research-lab-foundation/plan.md",
       "task": "specs/001-vs001-research-lab-foundation/tasks.md",
       "test": "tests/test_lab.py, tests/test_cli_init.py",
+      "status": "PASSED"
+    },
+    {
+      "requirement": "Research Task + agent-independent state (FR-001..FR-006)",
+      "source": "fundactional.md §16, §17, §33, §45-47",
+      "feature": "vs002-research-task-state",
+      "spec": "specs/002-vs002-research-task-state/spec.md",
+      "plan": "specs/002-vs002-research-task-state/plan.md",
+      "task": "specs/002-vs002-research-task-state/tasks.md",
+      "test": "tests/test_tasks.py",
       "status": "PASSED"
     }
   ]
