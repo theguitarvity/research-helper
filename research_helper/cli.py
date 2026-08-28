@@ -12,7 +12,11 @@ import typer
 
 from research_helper import lab
 from research_helper.papers import import_paper
-from research_helper.references import extract_references
+from research_helper.references import (
+    RawReference,
+    extract_references,
+    resolve_references,
+)
 from research_helper.search import SearchClient, SearchQuery, run_search
 from research_helper.search_clients import CrossrefClient, OpenAlexClient, SemanticScholarClient
 
@@ -100,6 +104,23 @@ def references_extract(
     paper_dir = paths.library_papers_dir / paper
     refs = extract_references(paper_dir)
     typer.echo(f"{len(refs)} references discovered")
+
+
+@references_app.command("resolve")
+def references_resolve(
+    paper: str = typer.Argument(..., help="Paper identifier under library/papers/."),
+) -> None:
+    """Resolve a paper's normalized references against external sources."""
+    paths = lab.LabPaths.resolve()
+    paper_dir = paths.library_papers_dir / paper
+    normalized = json.loads((paper_dir / "references.normalized.json").read_text())
+    refs = [RawReference(**r) for r in normalized]
+    clients = list(_ALL_CLIENTS.values())
+    resolved = resolve_references(paper_dir, refs, clients)
+    counts: dict[str, int] = {}
+    for r in resolved:
+        counts[r.state] = counts.get(r.state, 0) + 1
+    typer.echo(", ".join(f"{n} {state.lower()}" for state, n in counts.items()) or "0 resolved")
 
 
 if __name__ == "__main__":

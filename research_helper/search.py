@@ -48,18 +48,10 @@ class SearchClient(Protocol):
     def search(self, query: SearchQuery) -> list[SearchResult]: ...
 
 
-def _normalize_title(title: str) -> str:
+def normalize_title(title: str) -> str:
     text = unicodedata.normalize("NFKD", title).encode("ascii", "ignore").decode("ascii")
     text = re.sub(r"[^a-z0-9]+", " ", text.lower()).strip()
     return re.sub(r"\s+", " ", text)
-
-
-def _dedup_key(result: SearchResult) -> tuple[str, str] | None:
-    if result.doi:
-        return ("doi", result.doi.strip().lower())
-    if result.title:
-        return ("title", _normalize_title(result.title))
-    return None
 
 
 def dedup(results: list[SearchResult]) -> list[SearchResult]:
@@ -71,7 +63,7 @@ def dedup(results: list[SearchResult]) -> list[SearchResult]:
 
     for r in results:
         doi_key = r.doi.strip().lower() if r.doi else None
-        title_key = _normalize_title(r.title) if r.title else None
+        title_key = normalize_title(r.title) if r.title else None
         ay_key = (
             (",".join(sorted(a.lower() for a in r.authors)), r.year)
             if r.authors and r.year
@@ -97,7 +89,7 @@ def dedup(results: list[SearchResult]) -> list[SearchResult]:
 
 
 def _slugify(text: str) -> str:
-    slug = _normalize_title(text).replace(" ", "-")
+    slug = normalize_title(text).replace(" ", "-")
     return slug[:60].strip("-") or "search"
 
 
