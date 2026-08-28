@@ -13,6 +13,7 @@ import typer
 from research_helper import lab
 from research_helper.acquisition import HttpxDownloader, acquire_references
 from research_helper.citations import validate_citations
+from research_helper.experiments import init_experiment
 from research_helper.graph import build_graph
 from research_helper.papers import import_paper
 from research_helper.references import (
@@ -206,6 +207,33 @@ def vault_sync() -> None:
     written = sync_vault(paths)
     write_current_context(paths)
     typer.echo(f"{len(written)} paper note(s) synced; current-context.md refreshed")
+
+
+experiment_app = typer.Typer(help="Experiment scaffolding.")
+app.add_typer(experiment_app, name="experiment")
+
+
+@experiment_app.command("init")
+def experiment_init(
+    name: str = typer.Argument(..., help="Experiment name."),
+    title: str | None = typer.Option(None, "--title"),
+    research_question: str | None = typer.Option(None, "--research-question"),
+    hypothesis: str | None = typer.Option(None, "--hypothesis"),
+    dataset: str | None = typer.Option(None, "--dataset"),
+    reproduction_command: str | None = typer.Option(None, "--reproduction-command"),
+) -> None:
+    """Scaffold a new experiment under experiments/<name>/."""
+    paths = lab.LabPaths.resolve()
+    exp_dir = init_experiment(
+        paths,
+        name,
+        title=title,
+        research_question=research_question,
+        hypothesis=hypothesis,
+        dataset=dataset,
+        reproduction_command=reproduction_command,
+    )
+    typer.echo(f"Experiment scaffolded at {exp_dir}")
 
 
 if __name__ == "__main__":

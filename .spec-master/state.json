@@ -351,11 +351,11 @@
         "globalization.md"
       ],
       "branch": null,
-      "status": "PENDING",
+      "status": "PASSED",
       "spec_directory": "specs/012-vs012-experiment-scaffolder",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "PENDING",
+        "specify": "RUNNING",
         "clarify": "PENDING",
         "plan": "PENDING",
         "tasks": "PENDING",
@@ -632,6 +632,16 @@
       "plan": "specs/011-vs011-obsidian-research-memory/plan.md",
       "task": "specs/011-vs011-obsidian-research-memory/tasks.md",
       "test": "tests/test_vault.py",
+      "status": "PASSED"
+    },
+    {
+      "requirement": "Experiment scaffolder + manifest schema (FR-001..FR-005)",
+      "source": "fundactional.md §21-23",
+      "feature": "vs012-experiment-scaffolder",
+      "spec": "specs/012-vs012-experiment-scaffolder/spec.md",
+      "plan": "specs/012-vs012-experiment-scaffolder/plan.md",
+      "task": "specs/012-vs012-experiment-scaffolder/tasks.md",
+      "test": "tests/test_experiments.py",
       "status": "PASSED"
     }
   ]
