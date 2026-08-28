@@ -84,11 +84,11 @@
         "globalization.md"
       ],
       "branch": null,
-      "status": "PENDING",
+      "status": "PASSED",
       "spec_directory": "specs/003-vs003-scientific-search",
       "analyze_repair_cycles": 0,
       "phases": {
-        "specify": "PENDING",
+        "specify": "RUNNING",
         "clarify": "PENDING",
         "plan": "PENDING",
         "tasks": "PENDING",
@@ -542,6 +542,16 @@
       "plan": "specs/002-vs002-research-task-state/plan.md",
       "task": "specs/002-vs002-research-task-state/tasks.md",
       "test": "tests/test_tasks.py",
+      "status": "PASSED"
+    },
+    {
+      "requirement": "Scientific search: normalized schema, dedup, reproducible manifest (FR-001..FR-006)",
+      "source": "fundactional.md §7, §38",
+      "feature": "vs003-scientific-search",
+      "spec": "specs/003-vs003-scientific-search/spec.md",
+      "plan": "specs/003-vs003-scientific-search/plan.md",
+      "task": "specs/003-vs003-scientific-search/tasks.md",
+      "test": "tests/test_search.py, tests/test_search_clients.py",
       "status": "PASSED"
     }
   ]
