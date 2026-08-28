@@ -24,6 +24,7 @@ from research_helper.references import (
 from research_helper.search import SearchClient, SearchQuery, run_search
 from research_helper.search_clients import CrossrefClient, OpenAlexClient, SemanticScholarClient
 from research_helper.synthesis import PaperSynthesis, write_individual_synthesis
+from research_helper.vault import sync_vault, write_current_context
 
 app = typer.Typer(help="Research Helper — agentic research engineering harness.")
 references_app = typer.Typer(help="Reference extraction/resolution/download.")
@@ -192,6 +193,19 @@ def graph_build() -> None:
     paths = lab.LabPaths.resolve()
     graph = build_graph(paths)
     typer.echo(f"{len(graph.nodes)} nodes, {len(graph.edges)} edges")
+
+
+vault_app = typer.Typer(help="Obsidian vault + research memory.")
+app.add_typer(vault_app, name="vault")
+
+
+@vault_app.command("sync")
+def vault_sync() -> None:
+    """Sync the Obsidian vault and refresh the current-context checkpoint."""
+    paths = lab.LabPaths.resolve()
+    written = sync_vault(paths)
+    write_current_context(paths)
+    typer.echo(f"{len(written)} paper note(s) synced; current-context.md refreshed")
 
 
 if __name__ == "__main__":
