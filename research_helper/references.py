@@ -17,7 +17,8 @@ from research_helper.search import SearchClient, SearchQuery, SearchResult, norm
 
 DOI_PATTERN = re.compile(r"10\.\d{4,9}/[^\s\)\]\"'>,;]+")
 SECTION_HEADING_PATTERN = re.compile(
-    r"^\s*(references|bibliography)\s*$", re.IGNORECASE | re.MULTILINE
+    r"^\s*(references|bibliography|refer[eê]ncias|bibliografia)\s*$",
+    re.IGNORECASE | re.MULTILINE,
 )
 BRACKET_REF_PATTERN = re.compile(r"(?=\[\d+\])")
 NUMBERED_REF_PATTERN = re.compile(r"(?=^\d+\.\s)", re.MULTILINE)
